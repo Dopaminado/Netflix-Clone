@@ -3,6 +3,8 @@ import Vuetify from "vuetify/lib/framework";
 import colors from "vuetify/lib/util/colors";
 import pt from "vuetify/src/locale/pt.ts";
 import en from "vuetify/src/locale/en.ts";
+import '@mdi/font/css/materialdesignicons.css'
+
 
 Vue.use(Vuetify);
 
@@ -23,5 +25,9 @@ export default new Vuetify({
         primary: colors.blue.lighten3,
       },
     },
+  },
+
+  icons: {
+    iconfont: 'mdi',
   },
 });
