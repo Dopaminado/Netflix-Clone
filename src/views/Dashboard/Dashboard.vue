@@ -309,7 +309,7 @@
             <v-col v-if="!$vuetify.breakpoint.mobile" cols="8" class="mt-4">
               <v-row class="align-center justify-end">
                 <v-col cols="1" class="pr-0 mr-2">
-                  <v-icon v-slot="{ hover }" :class="{'white--text': hover}" small color="white" class="pointer iconAudio pa-2">
+                  <v-icon small color="white" class="pointer iconAudio pa-2">
                     mdi-volume-off
                   </v-icon>
                 </v-col>
@@ -324,6 +324,7 @@
         </v-col>
       </v-row>
     </v-col>
+    <v-col cols="12"></v-col>
   </v-row>
 </template>
 
@@ -393,6 +394,16 @@ export default {
         date: "há 1 mês",
       },
     ],
+    items: [
+      {
+        title: "Em alta",
+        data: [
+          {
+            // COloca o mosue no video e pega todas as info pra criar um hover legal
+          },
+        ]
+      },
+    ]
   }),
   mounted() {
     this.checkUsers();
