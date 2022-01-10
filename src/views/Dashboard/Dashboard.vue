@@ -1,10 +1,11 @@
 <template>
-  <v-row class="">
+  <v-row style="background-color: rgba(0, 0, 0, 0.6)">
     <v-col cols="12" style="position: fixed">
       <v-row
         :class="{
           'change-color': scrollPosition > 20,
           'default-color': scrollPosition < 1,
+          'pl-7': !$vuetify.breakpoint.mobile,
         }"
       >
         <v-col cols="6" sm="6">
@@ -180,11 +181,7 @@
                         >mdi-chevron-down</v-icon
                       >
                     </template>
-                    <v-list
-                      color="rgba(255, 255, 255, 0.1)"
-                      style="height: 300px"
-                      class="mt-5 mr-5"
-                    >
+                    <v-list style="height: 300px" class="mt-5 mr-5 transparent">
                       <v-list-item v-for="item in itemUsers" :key="item" link>
                         <v-card
                           color="transparent"
@@ -225,6 +222,101 @@
                       </v-list-item>
                     </v-list>
                   </v-menu>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col
+      cols="12"
+      class="background-attr pt-0"
+      :style="
+        $vuetify.breakpoint.mobile
+          ? 'background-size: contain; '
+          : 'background-size: auto;'
+      "
+    >
+      <v-row
+        :class="{
+          'mt-10 pa-10': !$vuetify.breakpoint.mobile,
+          'mt-15': $vuetify.breakpoint.mobile,
+        }"
+      >
+        <v-col cols="12" :class="{ 'pb-2': $vuetify.breakpoint.mobile }">
+          <v-img
+            :src="require('../../assets/title-background.png')"
+            :lazy-syc="require('../../assets/title-background.png')"
+            max-width="40%"
+          ></v-img>
+        </v-col>
+        <v-col cols="12" :class="{ 'pt-0': $vuetify.breakpoint.mobile }">
+          <v-card
+            class="elevation-0 transparent synopsis white--text"
+            max-width="44%"
+          >
+            Toda princesa tem seus deveres, mas ela quer mesmo é encher a cara.
+            E com um elfo e um demônio como parceiros, levar o rei à loucura
+            será uma tarefa fácil.
+          </v-card>
+        </v-col>
+        <v-col cols="12">
+          <v-row>
+            <v-col cols="6" sm="4">
+              <v-row>
+                <v-col
+                  :class="{ 'mr-5': $vuetify.breakpoint.mobile }"
+                  cols="6"
+                  sm="5"
+                  md="4"
+                  lg="5"
+                >
+                  <v-btn
+                    class="font-weight-bold"
+                    :style="
+                      $vuetify.breakpoint.mobile
+                        ? 'font-size: 0.5rem; height: 25px;'
+                        : ''
+                    "
+                  >
+                    <v-icon :class="{ 'text-h4': !$vuetify.breakpoint.mobile }"
+                      >mdi-play</v-icon
+                    >
+                    Assistir
+                  </v-btn>
+                </v-col>
+                <v-col cols="4" sm="5" md="4" lg="5">
+                  <v-btn
+                    color="rgba(0, 0, 0, 0.4)"
+                    class="font-weight-medium white--text"
+                    :style="
+                      $vuetify.breakpoint.mobile
+                        ? 'font-size: 0.5rem; height: 25px;'
+                        : ''
+                    "
+                  >
+                    <v-icon
+                      :class="{ 'text-h4': !$vuetify.breakpoint.mobile }"
+                      class="mr-2"
+                      >mdi-information-outline</v-icon
+                    >
+                    Mais informações
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-col>
+            <v-col v-if="!$vuetify.breakpoint.mobile" cols="8" class="mt-4">
+              <v-row class="align-center justify-end">
+                <v-col cols="1" class="pr-0 mr-2">
+                  <v-icon v-slot="{ hover }" :class="{'white--text': hover}" small color="white" class="pointer iconAudio pa-2">
+                    mdi-volume-off
+                  </v-icon>
+                </v-col>
+                <v-col cols="1" class="ageRecommended pt-0 pb-0">
+                  <div class="rounded black white--text font-weight-bold pa-2">
+                    18
+                  </div>
                 </v-col>
               </v-row>
             </v-col>
@@ -345,7 +437,6 @@ export default {
       }
     },
     changeUsername(user) {
-      console.log(user);
       switch (user) {
         case 1:
           return "Usuário 1";
@@ -366,6 +457,37 @@ export default {
 </script>
 
 <style scoped>
+.background-attr {
+  background-image: url("../../assets/background.jpg");
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  opacity: 1;
+  background-origin: padding-box;
+  line-height: 11.4833px;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  height: 100vh;
+  max-height: 100%;
+  width: 100%;
+}
+.synopsis {
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  font-size: 1.4vw;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+}
+.iconAudio {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+}
+.ageRecommended {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid white;
+  padding-left: 10px;
+}
 .background-list-item {
   background: rgba(255, 255, 255, 0.1);
 }
@@ -374,7 +496,7 @@ export default {
 }
 .default-color {
   transition: 0.3s;
-  background: linear-gradient(to top, black, rgba(255, 255, 255, 0.1));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), black);
 }
 .change-color {
   transition: 2s;
