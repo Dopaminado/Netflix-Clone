@@ -1,24 +1,15 @@
-# jsj21-web
+<img src="/src/assets/Screenshot 2022-01-11 at 15-04-37 Netflix.png" alt="Netflix">
 
-## Project setup
-```
-npm install
-```
+# Nome Do Projeto
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Clone visual da NetFlix.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Veja o desenvolvimento do projeto:
 
-### Lints and fixes files
-```
-npm run lint
-```
+Para ver o desenvolvimento acesse o planejamento:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dopaminado/Netflix-Clone)
+
+## Feito Com:
+[![JAVASCRIPT](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+
