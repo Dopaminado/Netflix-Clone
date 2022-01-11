@@ -1,6 +1,6 @@
 <img src="/src/assets/Screenshot 2022-01-11 at 15-04-37 Netflix.png" alt="Netflix">
 
-# Nome Do Projeto
+# Netflix Clone
 
 Clone visual da NetFlix.
 
