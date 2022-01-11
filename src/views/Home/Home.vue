@@ -1,16 +1,16 @@
 <template>
-  <v-row class="black mx-auto background-formatted justify-center align-center">
+  <v-row class="mx-auto background-formatted justify-center align-center">
     <v-col
       cols="12"
       :class="!$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h5 ml-15 pl-8'"
       class="red--text font-weight-bold ml-12"
       >NETFLIX</v-col
     >
-    <v-col cols="12" class="mb-0 pb-0">
+    <v-col cols="12" class="mb-0 pb-0 mb-5">
       <v-row class="align-center justify-center">
         <v-col
           cols="12"
-          class="white--text text-center font-weight-medium"
+          class="white--text text-center font-weight-medium pb-0"
           :class="!$vuetify.breakpoint.mobile ? 'text-h3' : 'text-h5'"
           >Quem está assistindo?
         </v-col>
@@ -34,7 +34,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" sm="2" class="justify-center d-flex">
+    <v-col cols="12" sm="2" class="justify-center d-flex mb-5">
       <v-btn outlined class="white--text"> Gerenciar perfis </v-btn>
     </v-col>
   </v-row>
@@ -85,5 +85,6 @@ export default {
   height: 100vh;
   max-height: 100vh;
   width: 100%;
+  background: rgb(20, 20, 20);
 }
 </style>

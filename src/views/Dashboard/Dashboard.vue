@@ -1,5 +1,5 @@
 <template>
-  <v-row style="background-color: rgba(0, 0, 0, 0.6); height: 100%">
+  <v-row class="background-dark" style="height: 100%">
     <v-col cols="12" style="position: fixed; z-index: 100">
       <v-row
         :class="{
@@ -120,12 +120,13 @@
                     >mdi-bell</v-icon
                   >
                 </template>
-                <v-list
-                  color="rgba(255, 255, 255, 0.1)"
-                  style="height: 300px"
-                  class="mt-5"
-                >
-                  <v-list-item v-for="item in itemIconBell" :key="item" link>
+                <v-list color="transparent" style="height: 300px" class="mt-5">
+                  <v-list-item
+                    class="background-dark-opacity"
+                    v-for="item in itemIconBell"
+                    :key="item"
+                    link
+                  >
                     <v-card
                       color="transparent"
                       class="elevation-0"
@@ -181,8 +182,13 @@
                         >mdi-chevron-down</v-icon
                       >
                     </template>
-                    <v-list style="height: 300px" class="mt-5 mr-5 transparent">
-                      <v-list-item v-for="item in itemUsers" :key="item" link>
+                    <v-list style="height: 300px" class="transparent">
+                      <v-list-item
+                        class="background-dark-opacity"
+                        v-for="item in itemUsers"
+                        :key="item"
+                        link
+                      >
                         <v-card
                           color="transparent"
                           class="elevation-0"
@@ -208,7 +214,10 @@
                           </v-row>
                         </v-card>
                       </v-list-item>
-                      <v-list-item link class="subtitle-2 white--text">
+                      <v-list-item
+                        link
+                        class="subtitle-2 white--text background-dark-opacity"
+                      >
                         Gerenciar perfis
                       </v-list-item>
                       <v-divider color="grey"></v-divider>
@@ -216,7 +225,7 @@
                         v-for="item in lastItemUsers"
                         :key="item"
                         link
-                        class="white--text"
+                        class="white--text background-dark-opacity"
                       >
                         {{ item.text }}
                       </v-list-item>
@@ -232,11 +241,7 @@
     <v-col
       cols="12"
       class="background-attr pt-0"
-      :style="
-        $vuetify.breakpoint.mobile
-          ? 'background-size: contain; '
-          : 'background-size: 100% 100%'
-      "
+      style="background-size: 100% 100%"
     >
       <v-row
         :class="{
@@ -324,35 +329,144 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" class="ml-13">
+    <v-col
+      cols="12"
+      class="background-dark"
+      :class="{ 'pl-0': !$vuetify.breakpoint.mobile }"
+    >
       <v-row>
-        <v-col cols="12">
-          <v-sheet class="mx-auto container-main" elevation="0">
+        <v-col
+          v-for="(item, key) in items"
+          :key="key"
+          cols="12"
+          class="pt-0 pb-0 background-dark"
+        >
+          <div
+            :class="{
+              'ml-14': !$vuetify.breakpoint.mobile,
+              'pl-1': $vuetify.breakpoint.mobile,
+            }"
+            class="title subtitle-1 font-weight-black"
+          >
+            {{ item.title }}
+          </div>
+          <v-sheet
+            style="margin-top: -5px"
+            class="mx-auto background-dark"
+            max-width="100%"
+          >
             <v-slide-group
-              v-model="alerts"
-              class="pa-4 selected black" 
               active-class="success"
-              show-arrows
+              class="pl-0 pa-4 selected background-dark"
             >
-              <v-slide-item
-                v-for="(item, key) in items"
-                :key="key"
-                class="container-main"
-              >
+              <v-slide-item v-for="(data, i) in item.data" :key="i">
                 <v-card
                   link
+                  height="100%"
                   max-width="228px"
-                  class="elevation-0 transparent ml-1 mr-1 card-container"
+                  class="elevation-0 ml-1 mr-1 card-container"
                 >
                   <v-img
-                    class="img-card"
-                    :src="item.imageUrl"
-                    :lazy-src="item.imageUrl"
+                    width="228"
+                    :src="data.imageUrl"
+                    :lazy-src="data.imageUrl"
                   ></v-img>
                 </v-card>
               </v-slide-item>
             </v-slide-group>
           </v-sheet>
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col
+      cols="12"
+      sm="10"
+      class=" mt-15 pt-10 ml-2"
+      :class="{ 'pl-15': !$vuetify.breakpoint.mobile }"
+    >
+      <v-row>
+        <v-col cols="12" class="">
+          <v-row :class="{'pl-3': $vuetify.breakpoint.mobile}">
+            <div class="mr-5">
+              <v-icon color="white pointer">mdi-facebook</v-icon>
+            </div>
+            <div class="mr-5">
+              <v-icon color="white pointer">mdi-instagram</v-icon>
+            </div>
+            <div class="mr-5">
+              <v-icon color="white pointer">mdi-twitter</v-icon>
+            </div>
+            <div class="mr-5">
+              <v-icon color="white pointer">mdi-youtube</v-icon>
+            </div>
+          </v-row>
+        </v-col>
+        <v-col cols="12">
+          <v-row :class="{'pl-3': $vuetify.breakpoint.mobile}">
+            <v-col cols="6" sm="3" class="pl-0">
+              <v-row class="grey--text caption">
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Idioma e legendas</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Imprensa</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Privacidade</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Entre em contato</v-col
+                >
+              </v-row>
+            </v-col>
+            <v-col cols="6" sm="3" class="pl-0">
+              <v-row class="grey--text caption">
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Audiodescrição</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Relação com investidores</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Avisos legais</v-col
+                >
+              </v-row>
+            </v-col>
+            <v-col cols="6" sm="3" class="pl-0">
+              <v-row class="grey--text caption">
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Centro de ajuda</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Carreiras</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Preferências de cookies</v-col
+                >
+              </v-row>
+            </v-col>
+            <v-col cols="6" sm="3" class="pl-0">
+              <v-row class="grey--text caption">
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Cartão pré-pago</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >Termos de uso</v-col
+                >
+                <v-col cols="12" class="pb-0 pointer footerText"
+                  >informações corporativas</v-col
+                >
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col :class="{'pl-3': $vuetify.breakpoint.mobile}" class="pl-0" cols="12">
+          <v-btn outlined class="grey--text caption rounded-0 pa-2"
+            >Código de serviço</v-btn
+          >
+        </v-col>
+        <v-col :class="{'pl-3': $vuetify.breakpoint.mobile}" cols="12" class="pl-0 grey--text caption">
+          © 1997-2022 Netflix, Inc.
         </v-col>
       </v-row>
     </v-col>
@@ -428,265 +542,117 @@ export default {
     items: [
       {
         title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
         data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/seeTop.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/2.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/3.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/4.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/5.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/6.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/7.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/8.jpg"),
           },
         ],
       },
       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
+        title: "Comédia",
         data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/c1.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c2.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c3.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c4.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c5.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c6.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c7.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/c8.jpg"),
           },
         ],
       },
       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
+        title: "Filmes de terror",
         data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/t1.jpg"),
           },
-        ],
-      },
-       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/t2.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t3.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t4.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t5.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t6.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t7.jpg"),
+          },
+          {
+            imageUrl: require("../../assets/container/t8.jpg"),
           },
         ],
       },
       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
+        title: "Só na Netflix",
         data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n1.jpg"),
           },
-        ],
-      },
-      {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n2.jpg"),
           },
-        ],
-      },
-       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n3.jpg"),
           },
-        ],
-      },
-      {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n4.jpg"),
           },
-        ],
-      },
-      {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n5.jpg"),
           },
-        ],
-      },
-       {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n6.jpg"),
           },
-        ],
-      },
-      {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n7.jpg"),
           },
-        ],
-      },
-      {
-        title: "Em alta",
-        imageUrl: require("../../assets/container/seeTop.jpg"),
-        data: [
           {
-            agePermitted: 18,
-            relevant: "99%",
-            seasons: "2 temporadas",
-            tags: [
-              {
-                name: "Excêntricos",
-              },
-              {
-                name: "Provocantes",
-              },
-              {
-                name: "Espirituosos",
-              },
-            ],
+            imageUrl: require("../../assets/container/n8.jpg"),
           },
         ],
       },
@@ -758,7 +724,7 @@ export default {
 .background-attr {
   background-image: url("../../assets/background.jpg");
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: rgb(20, 20, 20);
   transition-timing-function: ease;
   transition-delay: 0s;
 
@@ -814,4 +780,19 @@ export default {
   transform: translateY(10%);
 }
 
+.background-dark {
+  background: rgb(20, 20, 20);
+}
+
+.background-dark-opacity {
+  background: rgba(20, 13, 13, 0.3);
+}
+
+.title {
+  color: rgb(229, 229, 229);
+}
+
+.footerText:hover {
+  text-decoration: underline;
+}
 </style>
