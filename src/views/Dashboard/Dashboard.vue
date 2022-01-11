@@ -1,6 +1,6 @@
 <template>
-  <v-row style="background-color: rgba(0, 0, 0, 0.6)">
-    <v-col cols="12" style="position: fixed">
+  <v-row style="background-color: rgba(0, 0, 0, 0.6); height: 100%">
+    <v-col cols="12" style="position: fixed; z-index: 100">
       <v-row
         :class="{
           'change-color': scrollPosition > 20,
@@ -235,7 +235,7 @@
       :style="
         $vuetify.breakpoint.mobile
           ? 'background-size: contain; '
-          : 'background-size: auto;'
+          : 'background-size: 100% 100%'
       "
     >
       <v-row
@@ -324,7 +324,38 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12"></v-col>
+    <v-col cols="12" class="ml-13">
+      <v-row>
+        <v-col cols="12">
+          <v-sheet class="mx-auto container-main" elevation="0">
+            <v-slide-group
+              v-model="alerts"
+              class="pa-4 selected black" 
+              active-class="success"
+              show-arrows
+            >
+              <v-slide-item
+                v-for="(item, key) in items"
+                :key="key"
+                class="container-main"
+              >
+                <v-card
+                  link
+                  max-width="228px"
+                  class="elevation-0 transparent ml-1 mr-1 card-container"
+                >
+                  <v-img
+                    class="img-card"
+                    :src="item.imageUrl"
+                    :lazy-src="item.imageUrl"
+                  ></v-img>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-col>
   </v-row>
 </template>
 
@@ -397,13 +428,269 @@ export default {
     items: [
       {
         title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
         data: [
           {
-            // COloca o mosue no video e pega todas as info pra criar um hover legal
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
           },
-        ]
+        ],
       },
-    ]
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+       {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+       {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+       {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Em alta",
+        imageUrl: require("../../assets/container/seeTop.jpg"),
+        data: [
+          {
+            agePermitted: 18,
+            relevant: "99%",
+            seasons: "2 temporadas",
+            tags: [
+              {
+                name: "Excêntricos",
+              },
+              {
+                name: "Provocantes",
+              },
+              {
+                name: "Espirituosos",
+              },
+            ],
+          },
+        ],
+      },
+    ],
   }),
   mounted() {
     this.checkUsers();
@@ -471,16 +758,13 @@ export default {
 .background-attr {
   background-image: url("../../assets/background.jpg");
   background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: black;
   transition-timing-function: ease;
   transition-delay: 0s;
-  opacity: 1;
-  background-origin: padding-box;
+
   line-height: 11.4833px;
   transition-property: opacity;
   transition-duration: 0.5s;
-  height: 100vh;
-  max-height: 100%;
   width: 100%;
 }
 .synopsis {
@@ -517,4 +801,17 @@ export default {
   transition: 0.3s;
   cursor: pointer;
 }
+
+.card-container {
+  transition: transform 500ms;
+}
+
+.card-container:focus,
+.card-container:hover {
+  transform: scale(1.15);
+  filter: brightness(65%);
+  transform: translateX(15%);
+  transform: translateY(10%);
+}
+
 </style>
