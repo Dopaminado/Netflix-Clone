@@ -2,7 +2,7 @@
 
 # Netflix Clone
 
-Clone visual da NetFlix.
+Clone visual da Netflix.
 
 ## Veja o desenvolvimento do projeto:
 
