@@ -5,9 +5,9 @@
 
     <!-- Add TopAppBar -->
     <!-- <AppBar v-if="!hideMenu" /> -->
-    <v-main class="">
+    <v-main style="background: rgb(20, 20, 20);" class="">
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="black background-formatted">
+      <v-container fluid class="background-formatted">
         <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
@@ -39,8 +39,22 @@ export default {
 
 <style>
 .background-formatted {
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
   width: 100%;
+  overflow-x: none;
+  background: rgb(20, 20, 20);
 }
+
+html::-webkit-scrollbar {
+      width: 10px; 
+   }
+
+html::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+  }
+
+html::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 25px;
+  }
 </style>

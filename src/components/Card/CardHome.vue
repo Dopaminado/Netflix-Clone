@@ -4,8 +4,8 @@
       link
       :max-width="!$vuetify.breakpoint.mobile ? 135 : 95"
       :max-height="!$vuetify.breakpoint.mobile ? '100%' : '85%'"
-      class="transparent"
-      to="/dashboard"
+      class="transparent elevation-0"
+      :to="{ path: '/dashboard', query: { profile_icon: imageUrl } }"
     >
       <v-row class="">
         <v-col cols="12">
